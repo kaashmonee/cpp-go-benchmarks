@@ -39,3 +39,31 @@ Slice deep copy time (new backing array): 0.253797554 seconds
 
 FINE. i guess i buy this. i guess i buy why i should care about movesemantics. 4x better is still pretty insane. FINE. ugh
 
+## templated functions benchmarks results
+
+```
+Boolean Parameter Benchmarks (1000 iterations on array of 100000 elements):
+
+Template with DoCheck=true: 33.7282 ms
+
+Runtime with doCheck=true: 14.592 ms
+
+  Improvement: -131.141% faster with template
+
+Template with DoCheck=false: 17.6207 ms
+
+Runtime with doCheck=false: 14.6132 ms
+
+  Improvement: -20.581% faster with template
+
+Unroll factor 1: 11.8006 ms (baseline)
+
+Unroll factor 2: 11.9554 ms (-1.31182% improvement)
+
+Unroll factor 4: 11.8346 ms (-0.288486% improvement)
+```
+
+seems like the templated functions are not ALWAYS faster even though they're evaluated
+at compile time. this contrived example is not just contrived, it's actually an anti-pattern
+can't help but feel like this is an example of contrived difficulty and/or red herring
+
