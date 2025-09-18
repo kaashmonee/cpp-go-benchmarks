@@ -1,4 +1,4 @@
-all: cpp_benchmark go_benchmark template_benchmark
+all: cpp_benchmark go_benchmark template_benchmark vector_benchmark
 
 cpp_benchmark: cpp_benchmark.cpp
 	g++ -std=c++14 -O2 cpp_benchmark.cpp -o cpp_benchmark
@@ -20,5 +20,12 @@ run_template_benchmark: template_benchmark
 	@echo "Running Template vs Runtime benchmark..."
 	./template_benchmark
 
+vector_benchmark: vector_layout_benchmark.cpp
+	g++ -std=c++14 -O3 vector_layout_benchmark.cpp -o vector_benchmark
+
+run_vector_benchmark: vector_benchmark
+	@echo "Running Vector Layout benchmark..."
+	./vector_benchmark
+
 clean:
-	rm -f cpp_benchmark go_benchmark template_benchmark
+	rm -f cpp_benchmark go_benchmark template_benchmark vector_benchmark
